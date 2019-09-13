@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    body
+      .container-fluid
+        .row
+          .col-12
+            table.table.table-striped
+              thead
+                tr
+                  th Mountain
+                  th Country
+                  th Height (m)
+                  th 
+              tbody
+                each val in datas
+                  tr
+                    td= val.Mountain
+                    td= val.Country
+                    td= val.Height
+                    td
+                      a.btn.btn-warning(href=`/mountains/details/${val.id}` role='button') Details 

@@ -1,0 +1,48 @@
+.img {
+  display: block;
+  height: 200px;
+  width: 200px;
+
+}
+
+.box {
+  position: relative;
+  width: 50%;
+  box-sizing: content-box;
+  padding: 10px
+}
+
+.overlay {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 9px;
+  right: 0;
+  height: 200px;
+  width: 200px;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgb(138, 161, 168);
+  border-radius: 5px;
+
+}
+
+.box:hover .overlay {
+  opacity: 0.5;
+}
+
+a {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: initial;
+}

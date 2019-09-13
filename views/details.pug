@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  body
+    .container
+      .row
+        .col
+          h1
+      .row
+        .col-6 
+          ul(class="list-group list-group-flush")
+            li(class="list-group-item") Mountain: #{oneData.Mountain}
+            li(class="list-group-item") Height: #{oneData.Height} m 
+            li(class="list-group-item") Range: #{oneData.MRange}
+            li(class="list-group-item") Region: #{oneData.Region}
+            li(class="list-group-item") Country: #{oneData.Country}
+        .col-6
+          if oneFA
+            ul(class="list-group list-group-flush")
+              li(class="list-group-item") First Ascent: #{oneFA.FADate}
+              li(class="list-group-item") Climbers: #{oneFA.Climbers}
+              li(class="list-group-item") Peak: #{oneFA.peak}
+      .row
+        .col
+          a.btn.btn-info(role='button' href='/mountains') Back

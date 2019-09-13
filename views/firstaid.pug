@@ -1,0 +1,16 @@
+extends layout
+block content
+	link(rel='stylesheet', href='/stylesheets/cards.css')
+	body
+		.container-fluid
+			.row
+				.col-12
+					h1 First Aid Tips
+			.row
+				.d-flex.flex-wrap.align-content-space-around.justify-content-between
+					each card in data
+						.col-2.box
+							img.rounded.img(src=`${card.img}` alt=`${card.name}`)
+							.overlay
+								a(href=`/firstaid/card/${card.id}`) #{card.name}
+
