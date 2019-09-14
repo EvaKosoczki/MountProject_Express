@@ -59,12 +59,23 @@ module.exports = class MountDB {
     return result
   }
 
-  async readUserProfil(id){
-    let sql=`
+  async readUserProfil(id) {
+    let sql = `
     select * from userprofil 
     where id=${id}
     `
-    let result= await this.conn.query(sql);
+    let result = await this.conn.query(sql);
+    return result;
+  }
+
+  async updateUserProfil(user) {
+    let sql = `
+        update userprofil
+        set firstname='${user.firstname}',lastname='${user.lastname}',email='${user.email}',
+        age=${user.age},country='${user.country}',city='${user.city}'
+        where id=${user.id}
+    `
+    let result = await this.conn.query(sql);
     return result;
   }
 

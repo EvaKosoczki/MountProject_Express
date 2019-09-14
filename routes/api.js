@@ -9,4 +9,9 @@ router.get('/:id', async (req, res, next) => {
 
 })
 
+router.post('/:id', async (req, res, next) => {
+  let editeduser = await MountDBSmp.updateUserProfil(req.body)
+  res.json(editeduser)
+})
+
 module.exports = router;
