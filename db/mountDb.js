@@ -59,4 +59,13 @@ module.exports = class MountDB {
     return result
   }
 
+  async readUserProfil(id){
+    let sql=`
+    select * from userprofil 
+    where id=${id}
+    `
+    let result= await this.conn.query(sql);
+    return result;
+  }
+
 }
