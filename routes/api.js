@@ -4,14 +4,19 @@ let MountDB = require('../db/mountDb')
 let MountDBSmp = new MountDB();
 
 router.get('/:id', async (req, res, next) => {
-  let data = await MountDBSmp.readUserProfil(req.params.id)
-  res.json(data)
+  let data = await MountDBSmp.readUserProfil(req.params.id);
+  res.json(data);
 
 })
 
+router.post('/new', async (req, res, next) => {
+  let newuser = await MountDBSmp.createUser(req.body);
+  res.json(newuser);
+})
 router.post('/:id', async (req, res, next) => {
-  let editeduser = await MountDBSmp.updateUserProfil(req.body)
-  res.json(editeduser)
+  let editeduser = await MountDBSmp.updateUserProfil(req.body);
+  res.json(editeduser);
 })
+
 
 module.exports = router;

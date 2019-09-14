@@ -12,7 +12,7 @@ module.exports = class MountDB {
       connectionLimit: 5
     });
     pool.getConnection().then(conn => this.conn = conn)
-  }
+  };
 
   async getMountains() {
     let sql = `
@@ -21,7 +21,7 @@ module.exports = class MountDB {
      `
     let result = await this.conn.query(sql);
     return result;
-  }
+  };
 
   async getOneMountains(id) {
     let sql = `
@@ -31,7 +31,7 @@ module.exports = class MountDB {
      `
     let result = await this.conn.query(sql);
     return result;
-  }
+  };
 
   async getOneFA(mountainName) {
     let sql = `
@@ -41,14 +41,14 @@ module.exports = class MountDB {
     `
     let result = await this.conn.query(sql);
     return result
-  }
+  };
 
   async readFirstAid() {
     let sql = `
     select * from firstaid`
     let result = await this.conn.query(sql);
     return result
-  }
+  };
 
   async readOneCard(id) {
     let sql = `
@@ -57,7 +57,7 @@ module.exports = class MountDB {
     `
     let result = await this.conn.query(sql);
     return result
-  }
+  };
 
   async readUserProfil(id) {
     let sql = `
@@ -66,7 +66,7 @@ module.exports = class MountDB {
     `
     let result = await this.conn.query(sql);
     return result;
-  }
+  };
 
   async updateUserProfil(user) {
     let sql = `
@@ -74,6 +74,17 @@ module.exports = class MountDB {
         set firstname='${user.firstname}',lastname='${user.lastname}',email='${user.email}',
         age=${user.age},country='${user.country}',city='${user.city}'
         where id=${user.id}
+    `
+    let result = await this.conn.query(sql);
+    return result;
+  };
+
+  async createUser(user) {
+    let sql = `
+    INSERT INTO userprofil
+      (firstname,lastname,email,age,country,city,password ) 
+      values ('${user.firstname}','${user.lastname}','${user.email}',
+      ${user.age},'${user.country}','${user.city}',SHA1('${user.password}'))
     `
     let result = await this.conn.query(sql);
     return result;
