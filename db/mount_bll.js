@@ -11,6 +11,8 @@ module.exports = class MountDB {
     const result = await db.getDataFromJoined(table1, table2, t1column, t2column, condColumn, condValue);
     return result;
   }
-
-
+  //not ready
+  async createMountData(table, columnNames, values) {
+    const result = await db.creatData()
+  }
 }

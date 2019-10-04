@@ -43,13 +43,19 @@ class DB {
     let result = await this.conn.query(sql);
     return result
   };
-//not working
-  async creatData(table, columnNames, ...values) {
+  //not ready
+  async creatData(table, columnNames, values) {
     let sql = `
-    INSERT INTO ${table} 
-    (${columnNames} ) 
-    VALUES (${values})
-     `
+    INSERT INTO ${table} (`
+    for (let i = 0; i < columnNames.length, i += 1) {
+      sql += `${i},`
+    }
+    sql += `) VALUES (`
+    for (let i = 0; i < values.length, i += 1) {
+      sql += `${i},`
+    }
+    sql += `)`
+    console.log(sql)
     let result = await this.conn.query(sql);
     return result
   }
