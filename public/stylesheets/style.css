@@ -1,1 +1,28 @@
+#secondSection {
+  /* width: auto;
+  height: 80vh; */
+  background-image: url('./../images/nav_background.jpg');
+  background-size: cover;
+  box-sizing: content-box;
+  margin: 0;
+}
 
+.fs-text {
+  padding: 15% 5%;
+}
+
+.bg-light {
+  background-color: transparent !important;
+}
+
+.fixed {
+  display: fixed
+}
+
+.bg-light.scrolled {
+  background-color: #10caca !important;
+}
+
+.container_padding {
+  padding-top: 5%
+}

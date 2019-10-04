@@ -2,7 +2,7 @@ extends layout
 block content
 	link(rel='stylesheet', href='/stylesheets/cards.css')
 	body
-		.container-fluid
+		.container-fluid.container_padding
 			.row
 				.col-12
 					h1 First Aid Tips
@@ -12,5 +12,5 @@ block content
 						.col-2.box
 							img.rounded.img(src=`${card.img}` alt=`${card.name}`)
 							.overlay
-								a(href=`/firstaid/card/${card.id}`) #{card.name}
+								a.links(href=`/firstaid/card/${card.id}`) #{card.name}
 
