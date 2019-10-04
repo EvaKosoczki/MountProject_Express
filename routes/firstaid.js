@@ -1,19 +1,18 @@
 var express = require('express');
 var router = express.Router();
-let MountDB = require('../db/mountDb')
-let MountDBSmp = new MountDB();
+let FirstAidDB = require('../db/firstaid_bll')
+let FirstAidDBSmp = new FirstAidDB();
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  let data = await MountDBSmp.readFirstAid()
+  let data = await FirstAidDBSmp.getFaTips('firstaid')
   res.render('firstaid', {
     data: data
   });
 });
 
 router.get('/card/:id', async (req, res, next) => {
-  let data = await MountDBSmp.readOneCard(req.params.id)
-  console.log(data)
+  let data = await FirstAidDBSmp.getFaTips('firstaid', req.params.id)
   res.render('oneCard', {
     data: data[0]
   });

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-let MountDB = require('../db/mountDb')
-let MountDBSmp = new MountDB();
+let MountBll = require('../db/mount_bll')
+let MountDBSmp = new MountBll();
 
 
 router.get('/mount', async (req, res, next) => {
