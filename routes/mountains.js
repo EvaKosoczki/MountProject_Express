@@ -13,15 +13,15 @@ router.get('/', async (req, res, next) => {
 
 router.get('/details/:id', async (req, res, next) => {
   let oneData = await MountDBSmp.getMountain('mountains', req.params.id)
-  /*let oneFA
+  let oneFA
   try {
-    oneFA = await MountDBSmp.getOneFA(oneData[0].Mountain)
+    oneFA = await MountDBSmp.getFirstAscent('mountains', 'firstascent', 'Mountain', 'peak', 'peak', oneData[0].Mountain)
   } catch (err) {
     console.log(err)
-  }*/
+  }
   res.render('details', {
     oneData: oneData[0],
-    //oneFA: oneFA[0]
+    oneFA: oneFA[0]
   })
 })
 

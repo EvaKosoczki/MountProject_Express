@@ -5,12 +5,12 @@ let MountDBSmp = new MountBll();
 
 
 router.get('/mount', async (req, res, next) => {
-  let allMounts = await MountDBSmp.getMountains();
+  let allMounts = await MountDBSmp.getMountain('mountains');
   res.json(allMounts);
 })
 
-router.get('/:id', async (req, res, next) => {
-  let data = await MountDBSmp.readUserProfil(req.params.id);
+router.get('/mount/:id', async (req, res, next) => {
+  let oneData = await MountDBSmp.getMountain('mountains', req.params.id)
   res.json(data);
 
 })

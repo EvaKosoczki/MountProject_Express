@@ -32,17 +32,27 @@ class DB {
       return result;
     };
   };
-  //not finished
-  async getDataFromJoined(mountainName) {
+
+  async getDataFromJoined(table1, table2, t1column, t2column, condColumn, condValue) {
     let sql = `
     SELECT * 
     FROM ${table1} 
     INNER JOIN ${table2} ON ${table1}.${t1column}=${table2}.${t2column}
-    where ${condColumn}='${mountainName}'
+    where ${condColumn}='${condValue}'
     `
     let result = await this.conn.query(sql);
     return result
   };
+//not working
+  async creatData(table, columnNames, ...values) {
+    let sql = `
+    INSERT INTO ${table} 
+    (${columnNames} ) 
+    VALUES (${values})
+     `
+    let result = await this.conn.query(sql);
+    return result
+  }
 
 
 

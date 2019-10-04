@@ -7,5 +7,10 @@ module.exports = class MountDB {
     return result;
   }
 
+  async getFirstAscent(table1, table2, t1column, t2column, condColumn, condValue) {
+    const result = await db.getDataFromJoined(table1, table2, t1column, t2column, condColumn, condValue);
+    return result;
+  }
+
 
 }
