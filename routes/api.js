@@ -1,29 +1,42 @@
 var express = require('express');
 var router = express.Router();
 let MountBll = require('../db/mount_bll')
+let UsersBll = require('../db/users_bll')
+
 let MountDBSmp = new MountBll();
+let UserDBSmp = new UsersBll();
 
-
-router.get('/mount', async (req, res, next) => {
-  let allMounts = await MountDBSmp.getMountain('mountains');
+router.get('/mountains', async (req, res, next) => {
+  let allMounts = await MountDBSmp.getMountain();
   res.json(allMounts);
 })
 
-router.get('/mount/:id', async (req, res, next) => {
-  let oneData = await MountDBSmp.getMountain('mountains', req.params.id)
-  res.json(data);
+router.get('/mountains/:id', async (req, res, next) => {
+  let oneData = await MountDBSmp.getMountain(req.params.id)
+  res.json(oneData);
 
 })
 
+router.get('/users', async (req, res, next) => {
+  let allUsers = await UserDBSmp.getUsers();
+  res.json(allUsers);
+})
 
+router.get('/users/:id', async (req, res, next) => {
+  let oneData = await UserDBSmp.getUsers(req.params.id)
+  res.json(oneData);
 
+})
+
+/*
 router.post('/new', async (req, res, next) => {
   let newuser = await MountDBSmp.createUser(req.body);
   res.json(newuser);
 })
-
-router.post('/:id', async (req, res, next) => {
-  let editeduser = await MountDBSmp.updateUserProfil(req.body);
+*/
+router.post('/users/:id', async (req, res, next) => {
+  console.log(req.body)
+  let editeduser = await UserDBSmp.updateUserProfile(req.body);
   res.json(editeduser);
 })
 

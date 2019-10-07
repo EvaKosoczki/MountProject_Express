@@ -5,17 +5,17 @@ let MountDBSmp = new MountBll();
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  let data = await MountDBSmp.getMountain('mountains')
+  let data = await MountDBSmp.getMountain()
   res.render('mountains', {
     datas: data
   });
 });
 
 router.get('/details/:id', async (req, res, next) => {
-  let oneData = await MountDBSmp.getMountain('mountains', req.params.id)
+  let oneData = await MountDBSmp.getMountain(req.params.id)
   let oneFA
   try {
-    oneFA = await MountDBSmp.getFirstAscent('mountains', 'firstascent', 'Mountain', 'peak', 'peak', oneData[0].Mountain)
+    oneFA = await MountDBSmp.getFirstAscent(oneData[0].Mountain)
   } catch (err) {
     console.log(err)
   }

@@ -43,15 +43,17 @@ class DB {
     let result = await this.conn.query(sql);
     return result
   };
+
+
   //not ready
   async creatData(table, columnNames, values) {
     let sql = `
     INSERT INTO ${table} (`
-    for (let i = 0; i < columnNames.length, i += 1) {
+    for (let i = 0; i < columnNames.length; i += 1) {
       sql += `${i},`
     }
     sql += `) VALUES (`
-    for (let i = 0; i < values.length, i += 1) {
+    for (let i = 0; i < values.length; i += 1) {
       sql += `${i},`
     }
     sql += `)`
@@ -60,7 +62,20 @@ class DB {
     return result
   }
 
-
+  async updateOne(table, data) {
+    let sql = `
+         update ${table}
+         set `
+    for (let [key, val] of Object.entries(data)) {
+      sql += `${key}='${val}', `
+    };
+    sql += `where id=${data.id}
+     `;
+    sql = sql.replace(', where', ' where')
+    console.log(sql)
+    let result = await this.conn.query(sql);
+    return result;
+  };
 
 
 

@@ -5,14 +5,14 @@ let FirstAidDBSmp = new FirstAidDB();
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  let data = await FirstAidDBSmp.getFaTips('firstaid')
+  let data = await FirstAidDBSmp.getFaTips()
   res.render('firstaid', {
     data: data
   });
 });
 
 router.get('/card/:id', async (req, res, next) => {
-  let data = await FirstAidDBSmp.getFaTips('firstaid', req.params.id)
+  let data = await FirstAidDBSmp.getFaTips(req.params.id)
   res.render('oneCard', {
     data: data[0]
   });

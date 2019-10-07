@@ -2,13 +2,13 @@ const db = require('./Database')
 
 module.exports = class MountDB {
 
-  async getMountain(table, id = '') {
-    const result = await db.getData(table, id);
+  async getMountain(id = '') {
+    const result = await db.getData('mountains', id);
     return result;
   }
 
-  async getFirstAscent(table1, table2, t1column, t2column, condColumn, condValue) {
-    const result = await db.getDataFromJoined(table1, table2, t1column, t2column, condColumn, condValue);
+  async getFirstAscent(condValue) {
+    const result = await db.getDataFromJoined('mountains', 'firstascent', 'Mountain', 'peak', 'peak', condValue);
     return result;
   }
   //not ready

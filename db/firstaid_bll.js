@@ -2,8 +2,8 @@ const db = require('./Database')
 
 module.exports = class FirstAidDB {
 
-  async getFaTips(table, id = '') {
-    const result = await db.getData(table);
+  async getFaTips(id = '') {
+    const result = await db.getData('firstaid');
     return result;
   }
 
