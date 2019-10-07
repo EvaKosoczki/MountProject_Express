@@ -9,4 +9,9 @@ module.exports = class UserDB {
     const result = await db.updateOne('userprofil', data);
     return result;
   }
+
+  async deleteUser(id) {
+    const result = await db.deleteOne('userprofil', id);
+    return result;
+  }
 }

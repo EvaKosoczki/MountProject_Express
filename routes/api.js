@@ -35,12 +35,14 @@ router.post('/new', async (req, res, next) => {
 })
 */
 router.post('/users/:id', async (req, res, next) => {
-  console.log(req.body)
   let editeduser = await UserDBSmp.updateUserProfile(req.body);
   res.json(editeduser);
 })
 
-
+router.delete('/users/:id', async (req, res, next) => {
+  let afterDelData = await UserDBSmp.deleteUser(req.params.id);
+  res.json(afterDelData)
+})
 
 
 module.exports = router;

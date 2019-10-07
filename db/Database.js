@@ -77,6 +77,13 @@ class DB {
     return result;
   };
 
+  async deleteOne(table, id) {
+    let sql = `DELETE FROM ${table} 
+    WHERE id=${id}
+    `;
+    let result = await this.conn.query(sql);
+    return result;
+  }
 
 
 
