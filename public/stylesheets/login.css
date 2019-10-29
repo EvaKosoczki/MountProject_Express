@@ -2,9 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,
-body {
+.html_login,
+.body_login {
   background-image: url('./../images/login.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+}
+
+.html_register,
+.body_register {
+  background-image: url('./../images/register.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100%;
@@ -16,13 +25,24 @@ body {
   align-content: center;
 }
 
-.card {
+.card_register {
+  height: 600px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  text-align: center;
+}
+
+.card_login {
   height: 370px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
   background-color: rgba(0, 0, 0, 0.5) !important;
+  text-align: center;
 }
+
 
 .social_icon span {
   font-size: 60px;

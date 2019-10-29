@@ -11,6 +11,7 @@ var MountainRouter = require('./routes/mountains');
 var FirstAidRouter = require('./routes/firstaid');
 var ApiRouter = require('./routes/api');
 var LoginRouter = require('./routes/login');
+var RegisterRouter = require('./routes/register');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,6 +38,7 @@ app.use('/mountains', MountainRouter);
 app.use('/api', ApiRouter);
 app.use('/firstaid', FirstAidRouter);
 app.use('/login', LoginRouter);
+app.use('/register', RegisterRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
