@@ -46,17 +46,18 @@ class DB {
 
 
   //not ready
-  async creatData(table, columnNames, values) {
+  async creatData(table, data) {
     let sql = `
     INSERT INTO ${table} (`
-    for (let i = 0; i < columnNames.length; i += 1) {
-      sql += `${i},`
+    for (let [key, val] of Object.entries(data)) {
+      sql += `${key},`
     }
     sql += `) VALUES (`
-    for (let i = 0; i < values.length; i += 1) {
-      sql += `${i},`
+    for (let [key, val] of Object.entries(data)) {
+      sql += `'${val}',`
     }
     sql += `)`
+    sql = sql.replace(/,\)/g, ')');
     console.log(sql)
     let result = await this.conn.query(sql);
     return result

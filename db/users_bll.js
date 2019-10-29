@@ -14,4 +14,9 @@ module.exports = class UserDB {
     const result = await db.deleteOne('userprofil', id);
     return result;
   }
+
+  async createUser(data) {
+    const result = await db.creatData('userprofil', data);
+    return result;
+  }
 }
