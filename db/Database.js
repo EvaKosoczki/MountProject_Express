@@ -45,7 +45,6 @@ class DB {
   };
 
 
-  //not ready
   async creatData(table, data) {
     let sql = `
     INSERT INTO ${table} (`
@@ -58,6 +57,8 @@ class DB {
     }
     sql += `)`
     sql = sql.replace(/,\)/g, ')');
+    sql = sql.replace(/'SHA1/g, 'SHA1')
+    sql = sql.replace(/'\)'/, '\')')
     console.log(sql)
     let result = await this.conn.query(sql);
     return result

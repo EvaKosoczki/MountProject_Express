@@ -16,6 +16,7 @@ module.exports = class UserDB {
   }
 
   async createUser(data) {
+    data.passw = `SHA1('${data.passw}')`;
     const result = await db.creatData('userprofil', data);
     return result;
   }
