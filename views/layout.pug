@@ -21,10 +21,12 @@ html
           li  
             a.nav-item.nav-link(href="/firstaid") First Aid Tips
         ul.nav.navbar-nav.ml-auto  
-          li
-            if user
-              a.nav-item.nav-link(href="/login") Login
-    
+          if user!=undefined
+            li          
+              a.nav-item.nav-link(href="/logout" ) Logout
+          else
+            li
+              a.nav-item.nav-link(href="/login" ) Login
 
 
   block content

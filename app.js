@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
+var UserDB = require('./db/users_bll');
+var UserDBSmp = new UserDB();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,6 +32,21 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST,PUT,DELETE,GET,OPTIONS');
   next();
+})
+
+app.use(async (req, res, next) => {
+  const user = await UserDBSmp.checkLogin(req.cookies.uuid);
+  if (user) {
+    res.locals.user = user;
+  }
+  console.log(res.locals.user);
+  next();
+})
+
+app.use('/logout', (req, res, next) => {
+  res.clearCookie('uuid');
+  res.redirect('/');
+  res.locals.user = undefined;
 })
 
 app.use('/', indexRouter);

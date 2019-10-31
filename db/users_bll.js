@@ -21,7 +21,8 @@ module.exports = class UserDB {
     return result;
   }
 
-  /*async checkLogin(req){
-    const result=await 
-  }*/
+  async checkLogin(token) {
+    const result = await db.getData('userprofil', 'cookie', token);
+    return result;
+  }
 }

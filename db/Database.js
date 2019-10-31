@@ -19,7 +19,7 @@ class DB {
       let sql = `
      SELECT *
      FROM ${table}
-     WHERE ${condColumn}=${condValue} 
+     WHERE ${condColumn}='${condValue}' 
      `;
       let result = await this.conn.query(sql);
       return result;

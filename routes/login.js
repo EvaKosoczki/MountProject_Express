@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var LoginDB = require('../db/login_bll');
-var LoginDBSmp = new LoginDB()
+var LoginDBSmp = new LoginDB();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
