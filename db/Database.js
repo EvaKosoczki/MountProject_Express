@@ -14,12 +14,12 @@ class DB {
     pool.getConnection().then(conn => this.conn = conn)
   };
 
-  async getData(table, id = '') {
-    if (id) {
+  async getData(table, condColumn = '', condValue = '') {
+    if (condColumn) {
       let sql = `
      SELECT *
      FROM ${table}
-     WHERE id=${id} 
+     WHERE ${condColumn}=${condValue} 
      `;
       let result = await this.conn.query(sql);
       return result;

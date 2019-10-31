@@ -20,4 +20,8 @@ module.exports = class UserDB {
     const result = await db.creatData('userprofil', data);
     return result;
   }
+
+  /*async checkLogin(req){
+    const result=await 
+  }*/
 }

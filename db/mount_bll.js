@@ -2,8 +2,8 @@ const db = require('./Database')
 
 module.exports = class MountDB {
 
-  async getMountain(id = '') {
-    const result = await db.getData('mountains', id);
+  async getMountain(condColumn='',id = '') {
+    const result = await db.getData('mountains',condColumn, id);
     return result;
   }
 

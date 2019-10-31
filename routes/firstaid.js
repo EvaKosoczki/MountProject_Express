@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/card/:id', async (req, res, next) => {
-  let data = await FirstAidDBSmp.getFaTips(req.params.id)
+  let data = await FirstAidDBSmp.getFaTips('id', req.params.id)
   res.render('oneCard', {
     data: data[0]
   });

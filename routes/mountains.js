@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/details/:id', async (req, res, next) => {
-  let oneData = await MountDBSmp.getMountain(req.params.id)
+  let oneData = await MountDBSmp.getMountain('id', req.params.id)
   let oneFA
   try {
     oneFA = await MountDBSmp.getFirstAscent(oneData[0].Mountain)
