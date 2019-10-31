@@ -23,18 +23,18 @@ body.body_login
 							span
 								i.fab.fa-twitter-square
 					.card-body
-						form
+						form(method="post" action="/login")
 							.input-group.form-group
 								.input-group-prepend
 									span.input-group-text
 										i.fas.fa-user
-								input.form-control(type='email' placeholder='email')
+								input.form-control(type='email' placeholder='email' name="email")
 							.input-group.form-group
 								.input-group-prepend
 									span.input-group-text
 										i.fas.fa-key
-								input.form-control(type='password' placeholder='password')
-							.row.align-items-center.remember.pb-3
+								input.form-control(type='password' placeholder='password' name="passw")
+							//-.row.align-items-center.remember.pb-3
 								input(type='checkbox')
 								| Remember Me
 							.form-group
