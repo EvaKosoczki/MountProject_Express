@@ -10,9 +10,24 @@ router.get('/', function (req, res, next) {
   });
 });
 
+const getToken = (l = 20) => {
+  let result = '';
+  for (let i = 0; i < l; i++) {
+    const index = Math.round(Math.random() * 25 + 65);
+    result += String.fromCharCode(index);
+  }
+  return result;
+};
+
 router.post('/', async (req, res, next) => {
   const result = await LoginDBSmp.loginUser(req.body);
-  console.log(req.body)
+  if (result.length === 1) {
+    const token = getToken();
+    res.cookie('uuid', token);
+    tokenObj = { cookie: token, id: result[0].id };
+    await LoginDBSmp.updateToken(tokenObj);
+    res.redirect('/');
+  }
   res.render('login');
 })
 
