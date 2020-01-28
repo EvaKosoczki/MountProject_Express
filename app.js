@@ -39,14 +39,15 @@ app.use(async (req, res, next) => {
   if (user) {
     res.locals.user = user;
   }
-  console.log(res.locals.user);
+
   next();
 })
 
 app.use('/logout', (req, res, next) => {
   res.clearCookie('uuid');
-  res.redirect('/');
   res.locals.user = undefined;
+  console.log(res.locals.user);
+  res.redirect('/');
 })
 
 app.use('/', indexRouter);
